@@ -20,6 +20,8 @@ const wss = new WebSocketServer({
   perMessageDeflate: false // <-- disables RSV1 compression issue
 });
 
+console.log(wss);
+
 wss.on('connection', (ws) => {
   console.log('Client connected');
 
