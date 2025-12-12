@@ -1,10 +1,24 @@
-import express from "express";
+// server.js
+const express = require('express');
+const cors = require('cors');
+
 const app = express();
+const PORT = 3000;
+
+// Allow CORS from any origin
+app.use(cors());
+
+// Parse JSON request bodies
 app.use(express.json());
 
-app.post("/track", (req, res) => {
-    console.log("Received:", req.body);
-    res.json({ ok: true });
+// Example POST endpoint
+app.post('/', (req, res) => {
+  console.log('Received data:', req.body);
+  res.json({ message: 'Success!', data: req.body });
 });
 
-app.listen(3000, () => console.log("Server running"));
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
+
